@@ -270,7 +270,7 @@ h6 {
 ._anim-show {
   transform: scale(0);
   opacity: 0;
-  transition: all 0.8s ease 0.4s;
+  transition: all 1s ease 0s;
 }
 
 ._anim-show._active,
@@ -1926,8 +1926,6 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   .introduction {
     display: block;
   }
-}
-@media (max-width: 47.99875em) {
   .introduction:after {
     display: block;
     content: "";
@@ -1965,64 +1963,94 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   background-position: bottom, right;
   background-size: cover, cover;
 }
+@media (min-width: 120em) {
+  .introduction__wrapper::before {
+    width: 56.875rem;
+  }
+}
+@media (min-width: 48em) and (max-width: 120em) {
+  .introduction__wrapper::before {
+    width: calc(26.25rem + 30.625 * (((100vw - 48rem)) / ((72))));
+  }
+}
+@media (max-width: 48em) {
+  .introduction__wrapper::before {
+    width: 26.25rem;
+  }
+}
+@media (min-width: 120em) {
+  .introduction__wrapper::before {
+    height: 39.125rem;
+  }
+}
+@media (min-width: 48em) and (max-width: 120em) {
+  .introduction__wrapper::before {
+    height: calc(25rem + 14.125 * (((100vw - 48rem)) / ((72))));
+  }
+}
+@media (max-width: 48em) {
+  .introduction__wrapper::before {
+    height: 25rem;
+  }
+}
 @media (max-width: 47.99875em) {
   .introduction__wrapper::before {
     content: inherit;
   }
 }
-.introduction__wrapper__title {
+.introduction__title {
   margin-left: 970px;
   margin-bottom: 3.75rem;
   width: 53.125rem;
   text-align: left;
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-bottom: 3.75rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-bottom: calc(1.5rem + 2.25 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-bottom: 1.5rem;
   }
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-left: 60.625rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-left: calc(26.875rem + 33.75 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-left: 26.875rem;
   }
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     width: 53.125rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     width: calc(20rem + 33.125 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     width: 20rem;
   }
 }
 @media (max-width: 47.99875em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     text-align: center;
     margin-top: 0rem;
     margin-bottom: 3rem;
@@ -2031,99 +2059,99 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   }
 }
 @media (max-width: 29.99875em) {
-  .introduction__wrapper__title {
+  .introduction__title {
     margin-bottom: 2.25rem;
   }
 }
-.introduction__wrapper__text {
+.introduction__text {
   margin-left: 970px;
   margin-bottom: 8.625rem;
   font-size: 1.5rem;
   line-height: 2.25rem;
   color: black;
   padding-right: 0.9375rem;
+  padding-left: 0;
   width: 53.125rem;
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     font-size: 1.5rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     font-size: calc(1rem + 0.5 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     font-size: 1rem;
   }
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     line-height: 2.25rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     line-height: calc(1.25rem + 1 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     line-height: 1.25rem;
   }
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     margin-left: 60.625rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     margin-left: calc(26.875rem + 33.75 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     margin-left: 26.875rem;
   }
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     margin-bottom: 8.625rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__text {
-    margin-bottom: calc(0rem + 8.625 * (((100vw - 48rem)) / ((72))));
+  .introduction__text {
+    margin-bottom: calc(1.5rem + 7.125 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__text {
-    margin-bottom: 0rem;
+  .introduction__text {
+    margin-bottom: 1.5rem;
   }
 }
 @media (min-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     width: 53.125rem;
   }
 }
 @media (min-width: 48em) and (max-width: 120em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     width: calc(20rem + 33.125 * (((100vw - 48rem)) / ((72))));
   }
 }
 @media (max-width: 48em) {
-  .introduction__wrapper__text {
+  .introduction__text {
     width: 20rem;
   }
 }
 @media (max-width: 47.99875em) {
-  .introduction__wrapper__text {
-    margin-bottom: 0;
-    margin-left: 0;
-    width: 90%;
+  .introduction__text {
+    margin: 0;
+    width: 95%;
     padding: 0 1.5625rem 1.5rem;
   }
 }
@@ -2598,6 +2626,16 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
 }
 .footer__copyright-button {
   border: none;
+  font-weight: 700;
+  color: #f35262;
+  background-color: white;
+}
+@media (max-width: 47.99875em) {
+  .footer__copyright-button {
+    color: white;
+    font-weight: 500;
+    background-color: #342524;
+  }
 }
 @media (max-width: 47.99875em) {
   .footer__text {
