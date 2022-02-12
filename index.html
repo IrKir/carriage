@@ -9,22 +9,414 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#ffffff" />
 	<title>Сайт грузоперевозок Актау, Быстро, надежно, недорого</title>
-	<link rel="stylesheet" href="css/style.min.css?_v=20220210162717">
+	<link rel="stylesheet" href="css/style.min.css?_v=20220212195646">
 	<link rel="icon" href="favicon.ico">
 	<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="img/apple.png">
 	<link rel="manifest" href="manifest.webmanifest">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<style>
+		.holder {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 1001;
+			background-color: #2D2F48;
+		}
+
+		.loader {
+			/* size */
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			z-index: 1001;
+			transform: translateX(-50%) translateY(-50%);
+			animation: rotatePreloader 2s infinite ease-in;
+		}
+
+		@keyframes rotatePreloader {
+			0% {
+				transform: translateX(-50%) translateY(-50%) rotateZ(0deg);
+			}
+
+			100% {
+				transform: translateX(-50%) translateY(-50%) rotateZ(-360deg);
+			}
+		}
+
+		.loader div {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+
+		.loader div:before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 0%;
+			width: 10%;
+			height: 10%;
+			background-color: #ffffff;
+			transform: translateX(-50%);
+			border-radius: 50%;
+		}
+
+		.loader div:nth-child(1) {
+			transform: rotateZ(0deg);
+			animation: rotateCircle1 2s infinite linear;
+			z-index: 9;
+		}
+
+		@keyframes rotateCircle1 {
+			0% {
+				opacity: 0;
+			}
+
+			0% {
+				opacity: 1;
+				transform: rotateZ(36deg);
+			}
+
+			7% {
+				transform: rotateZ(0deg);
+			}
+
+			57% {
+				transform: rotateZ(0deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(2) {
+			transform: rotateZ(36deg);
+			animation: rotateCircle2 2s infinite linear;
+			z-index: 8;
+		}
+
+		@keyframes rotateCircle2 {
+			5% {
+				opacity: 0;
+			}
+
+			5.0001% {
+				opacity: 1;
+				transform: rotateZ(0deg);
+			}
+
+			12% {
+				transform: rotateZ(-36deg);
+			}
+
+			62% {
+				transform: rotateZ(-36deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(3) {
+			transform: rotateZ(72deg);
+			animation: rotateCircle3 2s infinite linear;
+			z-index: 7;
+		}
+
+		@keyframes rotateCircle3 {
+			10% {
+				opacity: 0;
+			}
+
+			10.0002% {
+				opacity: 1;
+				transform: rotateZ(-36deg);
+			}
+
+			17% {
+				transform: rotateZ(-72deg);
+			}
+
+			67% {
+				transform: rotateZ(-72deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(4) {
+			transform: rotateZ(108deg);
+			animation: rotateCircle4 2s infinite linear;
+			z-index: 6;
+		}
+
+		@keyframes rotateCircle4 {
+			15% {
+				opacity: 0;
+			}
+
+			15.0003% {
+				opacity: 1;
+				transform: rotateZ(-72deg);
+			}
+
+			22% {
+				transform: rotateZ(-108deg);
+			}
+
+			72% {
+				transform: rotateZ(-108deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(5) {
+			transform: rotateZ(144deg);
+			animation: rotateCircle5 2s infinite linear;
+			z-index: 5;
+		}
+
+		@keyframes rotateCircle5 {
+			20% {
+				opacity: 0;
+			}
+
+			20.0004% {
+				opacity: 1;
+				transform: rotateZ(-108deg);
+			}
+
+			27% {
+				transform: rotateZ(-144deg);
+			}
+
+			77% {
+				transform: rotateZ(-144deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(6) {
+			transform: rotateZ(180deg);
+			animation: rotateCircle6 2s infinite linear;
+			z-index: 4;
+		}
+
+		@keyframes rotateCircle6 {
+			25% {
+				opacity: 0;
+			}
+
+			25.0005% {
+				opacity: 1;
+				transform: rotateZ(-144deg);
+			}
+
+			32% {
+				transform: rotateZ(-180deg);
+			}
+
+			82% {
+				transform: rotateZ(-180deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(7) {
+			transform: rotateZ(216deg);
+			animation: rotateCircle7 2s infinite linear;
+			z-index: 3;
+		}
+
+		@keyframes rotateCircle7 {
+			30% {
+				opacity: 0;
+			}
+
+			30.0006% {
+				opacity: 1;
+				transform: rotateZ(-180deg);
+			}
+
+			37% {
+				transform: rotateZ(-216deg);
+			}
+
+			87% {
+				transform: rotateZ(-216deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(8) {
+			transform: rotateZ(252deg);
+			animation: rotateCircle8 2s infinite linear;
+			z-index: 2;
+		}
+
+		@keyframes rotateCircle8 {
+			35% {
+				opacity: 0;
+			}
+
+			35.0007% {
+				opacity: 1;
+				transform: rotateZ(-216deg);
+			}
+
+			42% {
+				transform: rotateZ(-252deg);
+			}
+
+			92% {
+				transform: rotateZ(-252deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(9) {
+			transform: rotateZ(288deg);
+			animation: rotateCircle9 2s infinite linear;
+			z-index: 1;
+		}
+
+		@keyframes rotateCircle9 {
+			40% {
+				opacity: 0;
+			}
+
+			40.0008% {
+				opacity: 1;
+				transform: rotateZ(-252deg);
+			}
+
+			47% {
+				transform: rotateZ(-288deg);
+			}
+
+			97% {
+				transform: rotateZ(-288deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+		.loader div:nth-child(10) {
+			transform: rotateZ(324deg);
+			animation: rotateCircle10 2s infinite linear;
+			z-index: 0;
+		}
+
+		@keyframes rotateCircle10 {
+			45% {
+				opacity: 0;
+			}
+
+			45.0009% {
+				opacity: 1;
+				transform: rotateZ(-288deg);
+			}
+
+			52% {
+				transform: rotateZ(-324deg);
+			}
+
+			102% {
+				transform: rotateZ(-324deg);
+			}
+
+			100% {
+				transform: rotateZ(-324deg);
+				opacity: 1;
+			}
+		}
+
+
+		.loaded_hiding .preloader {
+			transition: 0.3s opacity;
+			opacity: 0;
+		}
+
+		.loaded .preloader {
+			display: none;
+		}
+
+		@keyframes hidePreloader {
+			0% {
+				opacity: 1;
+			}
+
+			100% {
+				opacity: 0;
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<div class="preloader">
+		<div class="holder"></div>
+		<div class="loader">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
 	<div class="wrapper">
+		</style>
 		<header id="top" class="header">
 			<div class="header__top top-header">
 				<div class="top-header__container">
 					<a href="index.html" class="top-header__logo">
-						<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png?_v=1644492437877" width="70" height="70" class="icon icon-logo" alt="Логотип компании"></picture></a>
+						<picture><source srcset="img/logo.webp" type="image/webp"><img src="img/logo.png?_v=1644677806313" width="70" height="70" class="icon icon-logo" alt="Логотип компании"></picture></a>
 					<div class="top-header__phone phone-header">
 						<span class="phone-header__icon"></span><a href="tel:+77020157063" class="phone-header__link">+7(702)015-70-63</a>
 					</div>
@@ -55,7 +447,7 @@
 						Организация грузовых перевозок любой сложности
 					</h1>
 					<p class="slogan__text anim-items anim-no-hide">
-						Эффективное решение логистических задач грузопотоков по&nbsp;Казахстану и РФ
+						Эффективное решение логистических задач грузопотоков по&nbsp;Казахстану и&nbsp;РФ
 					</p>
 					<a data-goto="#contacts" class="button button--width slogan__button" href="#">Контакты</a>
 				</div>
@@ -134,19 +526,19 @@
 					<h2 class="partners__title title anim-items anim-no-hide">Наши партнеры</h2>
 					<ul class="partners__list anim-items anim-no-hide">
 						<li class="partners__item anim-show">
-							<picture><source srcset="img/logo1.webp" type="image/webp"><img class="partners__img" src="img/logo1.png?_v=1644492437877" width="100" alt="Логотип партнера"></picture>
+							<picture><source srcset="img/logo1.webp" type="image/webp"><img class="partners__img" src="img/logo1.png?_v=1644677806313" width="100" alt="Логотип партнера"></picture>
 						</li>
 						<li class="partners__item anim-show">
-							<picture><source srcset="img/logo2.webp" type="image/webp"><img class="partners__img" src="img/logo2.png?_v=1644492437877" width="100" alt="Логотип партнера"></picture>
+							<picture><source srcset="img/logo2.webp" type="image/webp"><img class="partners__img" src="img/logo2.png?_v=1644677806313" width="100" alt="Логотип партнера"></picture>
 						</li>
 						<li class="partners__item anim-show">
-							<picture><source srcset="img/logo3.webp" type="image/webp"><img class="partners__img" src="img/logo3.png?_v=1644492437877" width="100" alt="Логотип партнера"></picture>
+							<picture><source srcset="img/logo3.webp" type="image/webp"><img class="partners__img" src="img/logo3.png?_v=1644677806313" width="100" alt="Логотип партнера"></picture>
 						</li>
 						<li class="partners__item anim-show">
-							<picture><source srcset="img/logo1.webp" type="image/webp"><img class="partners__img" src="img/logo1.png?_v=1644492437877" width="100" alt="Логотип партнера"></picture>
+							<picture><source srcset="img/logo1.webp" type="image/webp"><img class="partners__img" src="img/logo1.png?_v=1644677806313" width="100" alt="Логотип партнера"></picture>
 						</li>
 						<li class="partners__item anim-show">
-							<picture><source srcset="img/logo5.webp" type="image/webp"><img class="partners__img" src="img/logo5.png?_v=1644492437877" width="100" alt="Логотип партнера"></picture>
+							<picture><source srcset="img/logo5.webp" type="image/webp"><img class="partners__img" src="img/logo5.png?_v=1644677806313" width="100" alt="Логотип партнера"></picture>
 						</li>
 					</ul>
 				</div>
@@ -155,25 +547,25 @@
 				<h2 class="visually-hidden">Видеогалерея</h2>
 				<div class="clips__container">
 					<div class="clips__video-wrapper">
-						<video class="clips__video" width="400" preload="auto" muted autoplay controls poster="img/videos/clip1.jpg">
+						<video class="clips__video" width="400" preload="auto" muted controls poster="img/videos/clip1.jpg">
 							<source src="img/videos/clip1.webm" type='video/webm; codecs="vp8, vorbis"'>
 							<source src="img/videos/clip1.ogv" type='video/ogg; codecs="theora, vorbis"'>
 							<source src="img/videos/clip1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 							Тег video не поддерживается вашим браузером.
 						</video>
-						<video class="clips__video" width="400" preload="auto" muted autoplay controls poster="img/videos/clip1.jpg">
+						<video class="clips__video" width="400" preload="auto" muted controls poster="img/videos/clip1.jpg">
 							<source src="img/videos/clip1.webm" type='video/webm; codecs="vp8, vorbis"'>
 							<source src="img/videos/clip1.ogv" type='video/ogg; codecs="theora, vorbis"'>
 							<source src="img/videos/clip1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 							Тег video не поддерживается вашим браузером.
 						</video>
-						<video class="clips__video" width="400" preload="auto" muted autoplay controls poster="img/videos/clip1.jpg">
+						<video class="clips__video" width="400" preload="auto" muted controls poster="img/videos/clip1.jpg">
 							<source src="img/videos/clip1.webm" type='video/webm; codecs="vp8, vorbis"'>
 							<source src="img/videos/clip1.ogv" type='video/ogg; codecs="theora, vorbis"'>
 							<source src="img/videos/clip1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 							Тег video не поддерживается вашим браузером.
 						</video>
-						<video class="clips__video" width="400" preload="auto" muted autoplay controls poster="img/videos/clip1.jpg">
+						<video class="clips__video" width="400" preload="auto" muted controls poster="img/videos/clip1.jpg">
 							<source src="img/videos/clip1.webm" type='video/webm; codecs="vp8, vorbis"'>
 							<source src="img/videos/clip1.ogv" type='video/ogg; codecs="theora, vorbis"'>
 							<source src="img/videos/clip1.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
@@ -199,7 +591,7 @@
 								<source type="image/webp" srcset="img/photo5mobile.webp 1x, img/photo5tablet.webp 2x">
 								<source media="(min-width: 1280px)" srcset="img/photo5.jpg 1x, img/photo5desktop@2x.jpg 2x">
 								<source media="(min-width: 768px)" srcset="img/photo5tablet.jpg 1x, img/photo5.jpg 2x">
-								<img class="photos__img" src="img/photo5mobile.jpg?_v=1644492437877" width="400" height="300" srcset="img/photo5tablet.jpg 2x" alt="Кто-то что-то делает">
+								<img class="photos__img" src="img/photo5mobile.jpg?_v=1644677806313" width="400" height="300" srcset="img/photo5tablet.jpg 2x" alt="Кто-то что-то делает">
 							</picture>
 						</a>
 						<a class="photos__item" href="img/photo6.jpg">
@@ -209,7 +601,7 @@
 								<source type="image/webp" srcset="img/photo6mobile.webp 1x, img/photo6tablet.webp 2x">
 								<source media="(min-width: 1280px)" srcset="img/photo6.jpg 1x, img/photo6desktop@2x.jpg 2x">
 								<source media="(min-width: 768px)" srcset="img/photo6tablet.jpg 1x, img/photo6.jpg 2x">
-								<img class="photos__img" src="img/photo6mobile.jpg?_v=1644492437877" width="400" height="300" srcset="img/photo6tablet.jpg 2x" alt="Кто-то что-то делает">
+								<img class="photos__img" src="img/photo6mobile.jpg?_v=1644677806313" width="400" height="300" srcset="img/photo6tablet.jpg 2x" alt="Кто-то что-то делает">
 							</picture>
 						</a>
 						<a class="photos__item" href="img/photo7.jpg">
@@ -219,7 +611,7 @@
 								<source type="image/webp" srcset="img/photo7mobile.webp 1x, img/photo7tablet.webp 2x">
 								<source media="(min-width: 1280px)" srcset="img/photo7.jpg 1x, img/photo7desktop@2x.jpg 2x">
 								<source media="(min-width: 768px)" srcset="img/photo7tablet.jpg 1x, img/photo7.jpg 2x">
-								<img class="photos__img" src="img/photo7mobile.jpg?_v=1644492437877" width="400" height="300" srcset="img/photo7tablet.jpg 2x" alt="Кто-то что-то делает">
+								<img class="photos__img" src="img/photo7mobile.jpg?_v=1644677806313" width="400" height="300" srcset="img/photo7tablet.jpg 2x" alt="Кто-то что-то делает">
 							</picture>
 						</a>
 						<a class="photos__item" href="img/photo8.jpg">
@@ -229,7 +621,7 @@
 								<source type="image/webp" srcset="img/photo8mobile.webp 1x, img/photo8tablet.webp 2x">
 								<source media="(min-width: 1280px)" srcset="img/photo8.jpg 1x, img/photo8desktop@2x.jpg 2x">
 								<source media="(min-width: 768px)" srcset="img/photo8tablet.jpg 1x, img/photo8.jpg 2x">
-								<img class="photos__img" src="img/photo8mobile.jpg?_v=1644492437877" width="400" height="300" srcset="img/photo8tablet.jpg 2x" alt="Кто-то что-то делает">
+								<img class="photos__img" src="img/photo8mobile.jpg?_v=1644677806313" width="400" height="300" srcset="img/photo8tablet.jpg 2x" alt="Кто-то что-то делает">
 							</picture>
 						</a>
 						<a class="photos__item" href="img/photo9.jpg">
@@ -239,7 +631,7 @@
 								<source type="image/webp" srcset="img/photo9mobile.webp 1x, img/photo9tablet.webp 2x">
 								<source media="(min-width: 1280px)" srcset="img/photo9.jpg 1x, img/photo9desktop@2x.jpg 2x">
 								<source media="(min-width: 768px)" srcset="img/photo9tablet.jpg 1x, img/photo9.jpg 2x">
-								<img class="photos__img" src="img/photo9mobile.jpg?_v=1644492437877" width="400" height="300" srcset="img/photo9tablet.jpg 2x" alt="Кто-то что-то делает">
+								<img class="photos__img" src="img/photo9mobile.jpg?_v=1644677806313" width="400" height="300" srcset="img/photo9tablet.jpg 2x" alt="Кто-то что-то делает">
 							</picture>
 						</a>
 						<a class="photos__item" href="img/photo10.jpg">
@@ -249,7 +641,7 @@
 								<source type="image/webp" srcset="img/photo10mobile.webp 1x, img/photo10tablet.webp 2x">
 								<source media="(min-width: 1280px)" srcset="img/photo10.jpg 1x, img/photo10desktop@2x.jpg 2x">
 								<source media="(min-width: 768px)" srcset="img/photo10tablet.jpg 1x, img/photo10.jpg 2x">
-								<img class="photos__img" src="img/photo10mobile.jpg?_v=1644492437877" width="400" height="300" srcset="img/photo10tablet.jpg 2x" alt="Кто-то что-то делает">
+								<img class="photos__img" src="img/photo10mobile.jpg?_v=1644677806313" width="400" height="300" srcset="img/photo10tablet.jpg 2x" alt="Кто-то что-то делает">
 							</picture>
 						</a>
 					</div>
@@ -287,25 +679,25 @@
 			<div class="footer__contacts">
 				<div class="footer__container footer__contacts--wrapper">
 					<div class="footer__address--mobile">
-						<p class="footer__text-contacts">Наши контакты:</p>
+						<p class="footer__text-contacts">Наш адрес:</p>
 						<p class="footer__text-address">г.Актау, Промзона, 3 линия, ряд Б</p>
 					</div>
 					<div class="footer__phone">
 						<a class="footer__button button" href="tel:+77020157063">+7(702)0157063</a>
 					</div>
 					<div class="footer__address">
-						<p class="footer__text-contacts">Наши контакты:</p>
+						<p class="footer__text-contacts">Наш адрес:</p>
 						<p class="footer__text-address">г.Актау, Промзона, 3 линия, ряд Б</p>
 					</div>
 					<div class="footer__social social">
-						<a class="social__link" href="#">
-							<img class="social__img social__img--instagram" width="35" height="35" src="img/icons/instagram.svg?_v=1644492437877" alt="Мы в Инстаграм">
+						<a class="social__link" href="https://www.instagram.com/sideli_zveri/">
+							<img class="social__img social__img--instagram" width="35" height="35" src="img/icons/instagram.svg?_v=1644677806313" alt="Мы в Инстаграм">
 						</a>
-						<a class="social__link" href="#">
-							<img class="social__img social__img--whatsapp" width="40" height="40" src="img/icons/whatsapp.svg?_v=1644492437877" alt="Мы в whatsapp">
+						<a class="social__link" href="https://api.whatsapp.com/send/?phone=77020157063">
+							<img class="social__img social__img--whatsapp" width="40" height="40" src="img/icons/whatsapp.svg?_v=1644677806313" alt="Мы в whatsapp">
 						</a>
-						<a class="social__link" href="#">
-							<img class="social__img social__img--vk" width="35" height="35" src="img/icons/vk.svg?_v=1644492437877" alt="Мы в Вконтакте">
+						<a class="social__link" href="https://vk.com/id600557796">
+							<img class="social__img social__img--vk" width="35" height="35" src="img/icons/vk.svg?_v=1644677806313" alt="Мы в Вконтакте">
 						</a>
 					</div>
 				</div>
@@ -330,7 +722,7 @@
 </div>
  -->
 
-	<script src="js/app.min.js?_v=20220210162717"></script>
+	<script src="js/app.min.js?_v=20220212195646"></script>
 </body>
 
 </html>
